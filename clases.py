@@ -46,12 +46,12 @@ utilizada de este precio en la obra. Actualmente utilizados por la base de datos
         self.CPC = CPC
     
     def medicion(self):
-        print 'Método que calcula medición'
+        print('Método que calcula medición')
 
 class presupuesto:
     """Es un objeto que representa el presupuesto entero """
     def __init__(self, nombre):
-        print 'Creado presupuesto nombrado', nombre
+        print('Creado presupuesto nombrado', nombre)
 
     def leerBC3(self, archivo):
         regs = re.split('~',open(archivo).read())
@@ -66,7 +66,7 @@ class presupuesto:
                     regsD.update({reg[1]:reg[2:-1]})
                     #regsD.append(reg[1:-1])
                 except IndexError:
-                    print "No hay descomposiciones"
+                    print("No hay descomposiciones")
             elif reg[0] == 'M':
                 regsM.update({reg[1]:reg[2:-1]})
                 #regsM.append(reg[1:-1])
@@ -97,10 +97,11 @@ class presupuesto:
             else:
                 pass
     def escribir_resumen(self,codigo,resumen):
-        print self.buscar_concepto(codigo)
+        print(self.buscar_concepto(codigo))
        
     def grabar_BC3(self,archivo):
-        f = open(archivgrabarBC3     f.write('~V|SOFT S.A.|FIEBDC-3/2002|Presto 11.02||ANSI|'+'\n')
+        f = open(archivgrabarBC3)     
+        f.write('~V|SOFT S.A.|FIEBDC-3/2002|Presto 11.02||ANSI|'+'\n')
         f.write(u'~K|\\2\\3\\3\\2\\2\\2\\2\\EUR\\|0|'+'\n')
         for registrosC in [[concepto] + self.conceptos[concepto]  for concepto in self.conceptos]:
             reC = '~C|'
@@ -142,7 +143,7 @@ presBAS.leerBC3('179-11.bc3')
 #print presBAS.conceptos['18#']
 #print presBAS.descomposiciones['18#']
 for texto in presBAS.textos:
-    print presBAS.textos[texto]
+    print(presBAS.textos[texto])
 #print presBAS.conceptos['2.7.015']
 
 
@@ -153,7 +154,7 @@ pres1 = presupuesto('pres1')
 pres1.leerBC3('018-12.bc3')
 
 
-print pres1.textos
+print(pres1.textos)
 
 
 for concepto in pres1.conceptos:
@@ -161,20 +162,20 @@ for concepto in pres1.conceptos:
         
         for textoBAS in presBAS.textos:
             if presBAS.textos[textoBAS] == pres1.textos[concepto]:
-                print 'Coinciden', textoBAS, 'y', concepto
-                print pres1.textos[concepto]
-                print presBAS.conceptos[textoBAS][1]
-                print pres1.conceptos[concepto]
+                print('Coinciden', textoBAS, 'y', concepto)
+                print(pres1.textos[concepto])
+                print(presBAS.conceptos[textoBAS][1])
+                print(pres1.conceptos[concepto])
                 pres1.conceptos[concepto][1] = presBAS.conceptos[textoBAS][1]
-                print pres1.conceptos[concepto]
+                print(pres1.conceptos[concepto])
     except KeyError:
         pass
 
 pres1.grabar_BC3('018-12_con_resumen.bc3')
 
 
-print presgrabarBC3siciones
-print [ '~D|' + codigo+ '|' + pres1.descomposiciones[codigo][0] + '|' for codigo in pres1.descomposiciones]
+print(presgrabarBC3siciones)
+print([ '~D|' + codigo+ '|' + pres1.descomposiciones[codigo][0] + '|' for codigo in pres1.descomposiciones])
 
 
 # print presBAS.buscar_concepto('T30DA0005')

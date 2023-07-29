@@ -20,7 +20,7 @@ class presupuesto:
     def __init__(self, *archivo):
         try:
             self.leerBC3(archivo)
-            print self,'es un presupuesto creado a partir de', archivo[0]
+            print(self,'es un presupuesto creado a partir de', archivo[0])
         #except TypeError:
         #    print 'Creado presupuesto sin datos'
         finally:
@@ -48,7 +48,7 @@ class presupuesto:
                     regsD.update({reg[1]:reg[2:-1]})
                     #regsD.append(reg[1:-1])
                 except IndexError:
-                    print "No hay descomposiciones"
+                    print("No hay descomposiciones")
             elif reg[0] == 'M':
                 regsM.update({reg[1]:reg[2:-1]})
                 #regsM.append(reg[1:-1])

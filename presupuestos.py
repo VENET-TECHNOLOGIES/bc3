@@ -20,7 +20,7 @@ class manipulador_BC3():
     def __init__(self, *archivo):
         try:
             self.leerBC3(archivo)
-            print self,'es un presupuesto creado a partir de', archivo[0]
+            print(self,'es un presupuesto creado a partir de', archivo[0])
         #except TypeError:
         #    print 'Creado presupuesto sin datos'
         finally:
@@ -48,7 +48,7 @@ class manipulador_BC3():
                     regsD.update({reg[1]:reg[2:-1]})
                     #regsD.append(reg[1:-1])
                 except IndexError:
-                    print "No hay descomposiciones"
+                    print("No hay descomposiciones")
             elif reg[0] == 'M':
                 regsM.update({reg[1]:reg[2:-1]})
                 #regsM.append(reg[1:-1])
@@ -127,7 +127,7 @@ from nltk.tokenize import PunktWordTokenizer as Tokenizador
 from nltk.probability import FreqDist 
 
 todos_textos = ' '.join([pres1.textos[codigo].decode('latin2') for codigo in pres1.textos])
-print todos_textos
+print(todos_textos)
 textos_token = [Tokenizador().tokenize(pres1.textos[codigo].decode('latin2')) 
                 for codigo in pres1.textos]
 todos_textos_token = Tokenizador().tokenize(todos_textos)
@@ -147,6 +147,6 @@ for codigo in pres1.textos:
 for distri in distribuciones:
     for dist in [d for d in distribuciones if distribuciones != distri]:
         if (dist != distri and distribuciones[dist] == distribuciones[distri]):
-            print dist,'es probable que sea igual a', distri
-            print dist, pres1.textos[dist].decode('latin2')
-            print distri, pres1.textos[distri].decode('latin2')
+            print(dist,'es probable que sea igual a', distri)
+            print(dist, pres1.textos[dist].decode('latin2'))
+            print(distri, pres1.textos[distri].decode('latin2'))

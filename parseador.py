@@ -46,21 +46,21 @@ texto_p = '''TOTAL CAPÍTULO 22 SEGURIDAD Y SALUD...............................
 
 
 for capitulo in re.findall(buscCAP, texto_presupuesto):
-    print capitulo[0], capitulo[3],
+    print(capitulo[0], capitulo[3],)
     try:
         if re.search('TOTAL',capitulo[0], re.M):
             cap_bus = capitulo[0]+ ' ' + capitulo[3] + '([\w\W]*?)\.* ?(' + numero + ')'
-            print  '=', re.search(cap_bus, texto_presupuesto, re.M).group(2)
+            print('=', re.search(cap_bus, texto_presupuesto, re.M).group(2))
         else:
             pass
     except AttributeError:
-        print 'Error'
+        print('Error')
 numeros_texto = re.findall(numero, texto_presupuesto, re.M)
 
 def convertir_num(texto):
     return re.split(',',re.sub('.','',texto))
 
-print [convertir_num(nn)*1. for nn in numeros_texto]
+print([convertir_num(nn)*1. for nn in numeros_texto])
 
 busca = capitulo[0] + '[\w\W]* (' + numero + ') *\n'
 busca = 'TOTAL CAPÍTULO 01' + '[\w\W]* (' + numero + ')'

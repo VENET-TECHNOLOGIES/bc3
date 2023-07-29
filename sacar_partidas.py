@@ -17,13 +17,13 @@ from presupuesto import presupuesto
 presBAS = presupuesto('bc3s/24649_2258.bc3')
 
 descomps = presBAS.descomposiciones
-print "Descomposiciones", descomps
+print("Descomposiciones", descomps)
 
 arbol = {}
 
 while len(descomps) >= 1:
     nodo = descomps.keys()[0]
-    print nodo, [cod[0] for cod in re.findall(r'(.*?)\\(.*?)\\(.*?)\\',descomps[nodo][0])]
+    print(nodo, [cod[0] for cod in re.findall(r'(.*?)\\(.*?)\\(.*?)\\',descomps[nodo][0])])
     
     descomps.pop(nodo)
 
@@ -40,7 +40,7 @@ arbol = {"raiz": {
                   }
          }
 
-print arbol.keys()
+print(arbol.keys())
 
 '''
 for concepto in presBAS.conceptos:
